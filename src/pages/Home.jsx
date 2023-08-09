@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
-import CATEGORIES from "../assets/categories.json";
-
+import { useShop } from "../context/ShopContext";
+import { Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [categories, setCategories] = useState([]);
+  const { categories } = useShop();
 
-  useEffect(() => {
-    setCategories(CATEGORIES);
-  }, [])
+  if (!categories) return <Box>Home</Box>;
 
-  return <div>Home</div>;
+  return categories.map((cat) => (
+    <Link to={`/category/${cat.name.toLowerCase()}`} key={cat.id}>
+      {cat.name}
+    </Link>
+  ));
 };
 export default Home;

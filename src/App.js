@@ -7,10 +7,10 @@ import MainContainer from "./components/MainContainer";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainContainer/>}>
-      <Route path="category/:categoryName" element={<Category />} />
-      <Route path="checkout" element={<Checkout />} />
-      <Route path="*" element={<Home />} />
+      <Route element={<MainContainer />}>
+        <Route path="category/:categoryName" element={<Category />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );
