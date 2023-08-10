@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useShop } from "../context/ShopContext";
-import { Grid, GridItem, Heading } from "@chakra-ui/react";
+import { useShop } from "../context";
+import { Grid, GridItem } from "@chakra-ui/react";
+import Products from "../components/Products";
 
 const Category = () => {
   const { categories, products } = useShop();
@@ -14,18 +15,11 @@ const Category = () => {
   );
 
   return (
-    <Grid
-      templateAreas={`
-    'catName catName'
-    'filter products'
-    `}
-      templateColumns={"auto 1fr"}
-    >
-      <GridItem area={"catName"}>
-        <Heading>{currCategory.name}</Heading>
+    <Grid templateColumns={"auto 1fr"}>
+      <GridItem>Filter</GridItem>
+      <GridItem>
+        <Products category={currCategory} products={currProducts} />
       </GridItem>
-      <GridItem area={"filter"}>Filter</GridItem>
-      <GridItem area={"products"}>product</GridItem>
     </Grid>
   );
 };

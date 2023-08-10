@@ -1,5 +1,5 @@
-import { useShop } from "../context/ShopContext";
-import { Box } from "@chakra-ui/react";
+import { useShop } from "../context";
+import { Box, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -7,10 +7,14 @@ const Home = () => {
 
   if (!categories) return <Box>Home</Box>;
 
-  return categories.map((cat) => (
-    <Link to={`/category/${cat.name.toLowerCase()}`} key={cat.id}>
-      {cat.name}
-    </Link>
-  ));
+  return (
+    <Flex justify={"center"} align={"center"} gap={10}>
+      {categories.map((cat) => (
+        <Link to={`/category/${cat.name.toLowerCase()}`} key={cat.id}>
+          {cat.name}
+        </Link>
+      ))}
+    </Flex>
+  );
 };
 export default Home;

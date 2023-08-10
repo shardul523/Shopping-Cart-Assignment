@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import ShopProvider from "./context/ShopProvider";
+import CartProvider from "./context/CartProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,7 +12,9 @@ root.render(
     <BrowserRouter>
       <ChakraProvider>
         <ShopProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </ShopProvider>
       </ChakraProvider>
     </BrowserRouter>
