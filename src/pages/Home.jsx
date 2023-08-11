@@ -11,7 +11,13 @@ const Home = () => {
   return (
     <Flex justify={"center"} align={"center"} gap={10} mt={20}>
       {categories.map((cat) => (
-        <Button onClick={() => navigate(`/category/${cat.name.toLowerCase()}`)} key={cat.id} w={'150px'} h={'100px'} bg={'white'}>
+        <Button
+          onClick={() => navigate(`/category/${cat.name.toLowerCase()}`)}
+          key={cat.id}
+          w={"150px"}
+          h={"100px"}
+          bg={"white"}
+        >
           {cat.name}
         </Button>
       ))}

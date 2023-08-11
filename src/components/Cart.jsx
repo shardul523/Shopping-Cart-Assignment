@@ -1,9 +1,12 @@
-import { HStack, Box } from "@chakra-ui/react";
+import { HStack, Box, Button } from "@chakra-ui/react";
 import { useCart } from "../context";
 import { currency_symbols } from "../util";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useCart();
+
+  const navigate = useNavigate();
 
   const totalItems = cart.reduce(
     (accCount, item) => accCount + (item.count ? item.count : 0),
@@ -17,9 +20,9 @@ const Cart = () => {
 
   return (
     <HStack>
-      <Box bg={"white"} rounded={100} py={'.25rem'} px={'0.5rem'} fontSize={'1.25rem'}>
+      <Button bg={"white"} rounded={100} onClick={() => navigate("/checkout")}>
         {totalItems}
-      </Box>
+      </Button>
       <Box>{`${currency_symbols["USD"]}${totalPrice}`}</Box>
     </HStack>
   );
