@@ -2,10 +2,15 @@ import { useParams } from "react-router-dom";
 import { useShop } from "../context";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Products from "../components/Products";
+import Filter from "../components/Filter";
+import { useState } from "react";
 
 const Category = () => {
   const { categories, products } = useShop();
   const { categoryName } = useParams();
+  const [filters, setFilters] = useState(['expensive']);
+
+  console.log(filters);
 
   const currCategory = categories.filter(
     (cat) => cat.name.toLowerCase() === categoryName
@@ -16,9 +21,9 @@ const Category = () => {
 
   return (
     <Grid templateColumns={"auto 1fr"}>
-      <GridItem>Filter</GridItem>
+      <GridItem><Filter filters={filters} setFilters={setFilters}/></GridItem>
       <GridItem>
-        <Products category={currCategory} products={currProducts} />
+        <Products filters={filters} category={currCategory} products={currProducts} />
       </GridItem>
     </Grid>
   );
